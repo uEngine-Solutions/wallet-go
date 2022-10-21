@@ -20,7 +20,7 @@ func Use(c echo.Context) error { //TODO: 해당 Point 를 찾아서 메서드 �
 
 	command := UseCommand{}
 	command.Amount = 100
-	point.Use(command) // TODO: 어떻게 생성?
+	point.Use(command) 
 
 	return c.JSON(http.StatusOK, point)
 

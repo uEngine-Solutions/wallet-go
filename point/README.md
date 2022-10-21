@@ -13,8 +13,8 @@ go build main.go
 ## Packaging and Running in docker environment
 
 ```
-docker build -t username/point:latest .
-docker run username/point:latest
+docker build -t username/point:v1 .
+docker run username/point:v1
 ```
 
 ## Push images and running in Kubernetes
