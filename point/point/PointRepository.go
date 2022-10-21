@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-func (self *Point) Get(c echo.Context) error {
+func (self *Point) Get(c echo.Context) error { //TODO: how come
 	repository := PointRepository()
 	entities := repository.GetList()
 	return c.JSON(http.StatusOK, entities)
