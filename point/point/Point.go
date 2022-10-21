@@ -4,8 +4,8 @@ import (
 	"gopkg.in/jeevatkm/go-model.v1"
 	
 	"gorm.io/gorm"
-	"fmt"
-	"point/external"
+	//"fmt"
+	//"point/external"
 )
 
 type Point struct {
@@ -28,16 +28,16 @@ func (self *Point) onPostPersist() (err error){
 
 	return nil
 }
-func (self *Point) onPrePersist() (err error){}
-func (self *Point) onPreUpdate() (err error){}
-func (self *Point) onPostUpdate() (err error){}
-func (self *Point) onPreRemove() (err error){}
-func (self *Point) onPostRemove() (err error){}
+func (self *Point) onPrePersist() (err error){return nil}
+func (self *Point) onPreUpdate() (err error){return nil}
+func (self *Point) onPostUpdate() (err error){return nil}
+func (self *Point) onPreRemove() (err error){return nil}
+func (self *Point) onPostRemove() (err error){return nil}
 
 func (self *Point) Use(useCommand UseCommand){
 }
 
-func (self *UsePoint) UsePoint(couponPurchased CouponPurchased){
+func (self *Point) UsePoint(couponPurchased CouponPurchased){
 	/** Example 1:  new item
 	point := &Point{}
 	pointrepository.save(point)
@@ -67,7 +67,7 @@ func (self *UsePoint) UsePoint(couponPurchased CouponPurchased){
 	 });
 	*/
 }
-func (self *CompensatePoint) CompensatePoint(couponCancelled CouponCancelled){
+func (self *Point) CompensatePoint(couponCancelled CouponCancelled){
 	/** Example 1:  new item
 	point := &Point{}
 	pointrepository.save(point)
