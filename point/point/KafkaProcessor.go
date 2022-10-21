@@ -58,7 +58,7 @@ func KafkaConsumer(){
 			if err := json.Unmarshal(msg.Value, &dat); err != nil {
 				panic(err)
 			}
-            if dat["eventType"] == "CouponPurchased"{
+            if dat["eventType"] == "CouponPurchased"{  //TODO:  use header
                 wheneverCouponPurchased_UsePoint(dat)
             }
             if dat["eventType"] == "CouponCancelled"{
