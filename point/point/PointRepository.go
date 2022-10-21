@@ -3,6 +3,7 @@ package point
 import (
 	"net/http"
 	"strconv"
+
 	"github.com/labstack/echo"
 )
 
@@ -12,18 +13,19 @@ func (self *Point) Get(c echo.Context) error {
 	return c.JSON(http.StatusOK, entities)
 }
 
-func (self *Point) GetbyId(c echo.Context) error{
-	repository := PointRepository()
+func (self *Point) GetbyId(c echo.Context) error {
+	repository := PointRepository() //TODO: 선언이 어디있는?
+
 	id, _ := strconv.Atoi(c.Param("id"))
 	self = repository.GetID(id)
 
 	return c.JSON(http.StatusOK, self)
 }
 
-func (self *Point) Persist(c echo.Context) error{
+func (self *Point) Persist(c echo.Context) error {
 	repository := PointRepository()
-	params := make(map[string] string)
-	
+	params := make(map[string]string)
+
 	c.Bind(&params)
 	ObjectMapping(self, params)
 	self.onPrePersist()
@@ -31,16 +33,16 @@ func (self *Point) Persist(c echo.Context) error{
 	self.onPostPersist()
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
-	}else{
+	} else {
 		return c.JSON(http.StatusOK, self)
 	}
 }
 
-func (self *Point) Put(c echo.Context) error{
+func (self *Point) Put(c echo.Context) error {
 	repository := PointRepository()
 	id, _ := strconv.Atoi(c.Param("id"))
-	params := make(map[string] string)
-	
+	params := make(map[string]string)
+
 	c.Bind(&params)
 	self.onPreUpdate()
 	err := repository.Update(id, params)
@@ -53,7 +55,7 @@ func (self *Point) Put(c echo.Context) error{
 	}
 }
 
-func (self *Point) Remove(c echo.Context) error{
+func (self *Point) Remove(c echo.Context) error {
 	repository := PointRepository()
 	id, _ := strconv.Atoi(c.Param("id"))
 	self = repository.GetID(id)
